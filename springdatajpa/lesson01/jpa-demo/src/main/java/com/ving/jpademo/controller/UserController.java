@@ -6,17 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author liuweijie
  * @date 2020/9/17
  */
 @RestController
-@RequestMapping(path = "/api/vi")
+@RequestMapping(path = "/api/v1")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
@@ -26,7 +23,7 @@ public class UserController {
         return userRepository.save(user);
     }
 
-    @PostMapping(path = "users")
+    @GetMapping(path = "users")
     public Page<User> getAllUsers(Pageable request){
         return userRepository.findAll(request);
     }
